@@ -22,10 +22,25 @@ function getArticles()
     return $db->query("SELECT * from articles");
 }
 
+function getModeratedArticles()
+{
+    global $db;
+    return $db->query("SELECT * from moderated_articles");
+}
+
 function getArticlesById($id)
 {
     global $db;
     $articles = $db->query("SELECT * from articles where id=$id");
+    foreach ($articles as $article) {
+        return $article;
+    }
+}
+
+function getModeratedArticlesById($id)
+{
+    global $db;
+    $articles = $db->query("SELECT * from moderated_articles where id=$id");
     foreach ($articles as $article) {
         return $article;
     }
@@ -37,10 +52,21 @@ function createArticle($title, $description, $author, $date, $url, $img_name)
     $sql = "INSERT INTO `articles` (`title`, `description`, `author`, `created_date`, `url`, `img_name`) 
     VALUES ('$title', '$description', '$author', '$date', '$url', '$img_name')";
     $result = $db->query($sql);
-    if ($result->rowCount() > 0) {
-        echo "done";
-    } else {
-        echo "Error";
+    if (!$result) {
+        $db->errorInfo();
+        exit();
+    }
+}
+
+function createModeratedArticle($title, $description, $author, $date, $url, $img_name)
+{
+    global $db;
+    $sql = "INSERT INTO `moderated_articles` (`title`, `description`, `author`, `created_date`, `url`, `img_name`) 
+    VALUES ('$title', '$description', '$author', '$date', '$url', '$img_name')";
+    $result = $db->query($sql);
+    if (!$result) {
+        $db->errorInfo();
+        exit();
     }
 }
 
@@ -50,7 +76,10 @@ function createPerson($name, $secondName, $surName, $eMail, $phoneNumber)
     $sql = "INSERT INTO `person` (`name`, `secondName`, `surName`, `eMail`, `phoneNumber`) 
 Values ('$name', '$secondName', '$surName', '$eMail', '$phoneNumber')";
     $result = $db->query($sql);
-    echo $result->rowCount();
+    if (!$result) {
+        $db->errorInfo();
+        exit();
+    }
 }
 
 function getPersonId()
@@ -94,4 +123,18 @@ function getNameUser($login)
     $sql = "SELECT * from `person` where `id` = (select `person` from `users` where `login`='$login')";
     $result = $db->query($sql);
     return $result->fetchObject()->name;
+}
+
+function getUserGroup($id)
+{
+    global $db;
+    $sql = "SELECT `permissionsLevel` from `usergroups` where `id` = (
+        select `group_id` from `users` where `id`='$id'
+    )";
+    $result = $db->query($sql);
+    if (!$result) {
+        $db->errorInfo();
+        exit();
+    }
+    return $result->fetchObject()->group;
 }
