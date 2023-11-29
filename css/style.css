@@ -1,0 +1,656 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+
+header {
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 33px 9%;
+    background: linear-gradient(0deg, transparent, rgb(155, 192, 193) 93%);
+    ;
+}
+
+.logo {
+    font-size: 30px;
+    font-weight: 700;
+    color: black;
+}
+
+.logo i {
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.navlist {
+    display: flex;
+}
+
+.navlist p {
+    display: inline-block;
+}
+
+.navlist a {
+    color: black;
+    margin-left: 60px;
+    font-size: 15px;
+    font-weight: 600;
+    border-bottom: 2px solid transparent;
+    transition: all .55s ease;
+}
+
+.navlist a:hover {
+    border-bottom: 2px solid black;
+}
+
+#menu-icon {
+    color: black;
+    font-size: 35px;
+    z-index: 10001;
+    cursor: pointer;
+    display: none;
+}
+
+.main {
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(225deg, rgb(255, 255, 255) 39%, rgb(155, 192, 193) 93%);
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 2rem;
+}
+
+.article-block {
+    padding-top: 15%;
+    grid-column: span 2;
+}
+
+.header-article {
+    display: grid;
+    grid-template-columns: 2;
+    >a {
+        display: block;
+        grid-column: 2;
+        color: black;
+        background: rgb(155, 192, 193);
+        border: 0px solid transparent;
+        border-radius: 30px;
+        margin-left: auto;
+        margin-right: 30px;
+        padding: 12px 30px;
+        line-height: 1.4;
+        font-size: 14px;
+        font-weight: 500;
+        text-transform: uppercase;
+        transition: all .55s ease;
+    }
+
+    >a:hover {
+        transform: translateY(-8px);
+    }
+
+    >a:active {
+        background: linear-gradient(180deg, rgb(155, 192, 193) 10%, rgb(255, 255, 255));
+        transform: translateY(-4px);
+    }
+
+    >h1 {
+        display: block;
+        grid-column: 1;
+    }
+}
+
+.create-article-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.create-article-form div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.article {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    gap: 1rem;
+    align-self: center;
+    background: transparent;
+    border: 1px solid rgb(155, 192, 193);
+    border-radius: 30px;
+    margin: 30pt 0;
+    box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.51);
+    transition: all .55s ease;
+}
+
+.article:hover {
+    transform: translateY(-6px);
+    box-shadow: 15px 5px 5px rgba(0, 0, 0, 0.51);
+}
+
+.article-block>a {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    text-decoration: none;
+    color: black
+}
+
+.article-title {
+    padding-top: 15pt;
+    border-bottom: 3px solid rgb(155, 192, 193);
+}
+
+.article-title h1 {
+    font-family: 'VT323', monospace;
+    font-size: 23px;
+    line-height: 1;
+    color: black;
+    margin: 0 0 15px;
+}
+
+.article-description {
+    padding-top: 20px;
+}
+
+.article-description p {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    color: rgba(0, 0, 0, 0.623);
+}
+
+.article-img {
+    display: grid;
+    grid-row: span 2;
+    justify-content: center;
+    margin-left: 15px;
+}
+
+.article-img img {
+    max-width: 350px;
+    max-height: 350px;
+    align-self: center;
+}
+
+.article-text h5 {
+    padding-top: 5pt;
+    margin-right: 10pt;
+    text-align: right;
+    color: rgba(0, 0, 0, 0.411);
+}
+
+.article-text a.buttom {
+    display: inline-block;
+    color: black;
+    background: transparent;
+
+    padding: 8px 20px;
+    line-height: 1.4;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: all .55s ease;
+    margin-bottom: 20px;
+}
+
+.article-text a.ex-buttom {
+    color: black;
+    background: transparent;
+    border: 1px solid rgb(155, 192, 193);
+    border-radius: 8px;
+    padding: 8px 20px;
+    line-height: 1.4;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: all .55s ease;
+}
+
+.article-text a.ex-buttom:hover {
+    background: rgb(155, 192, 193);
+    transform: translateX(6px);
+}
+
+section {
+    padding: 0 19%;
+}
+
+.main-text h5 {
+    font-size: 14px;
+    font-weight: 400;
+    color: black;
+    margin-bottom: 40px;
+}
+
+.main-text h1 {
+    font-family: 'VT323', monospace;
+    font-size: 90px;
+    line-height: 1;
+    color: black;
+    margin: 0 0 45px;
+}
+
+.main-text h4 {
+    font-size: 18px;
+    font-weight: 600;
+    color: black;
+    margin-bottom: 10px;
+}
+
+.main-text p {
+    color: black;
+    font-size: 15px;
+    line-height: 1.9;
+    margin-bottom: 40px;
+}
+
+.main-img img {
+    width: 700px;
+    height: auto;
+}
+
+.main-text a {
+    display: inline-block;
+    color: black;
+    background: rgb(155, 192, 193);
+    border: 0px solid transparent;
+    border-radius: 30px;
+    padding: 12px 30px;
+    line-height: 1.4;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: all .55s ease;
+}
+
+.main-text a:hover {
+    transform: translateY(-8px);
+}
+
+.main-text a:active {
+    background: linear-gradient(180deg, rgb(155, 192, 193) 10%, rgb(255, 255, 255));
+    transform: translateY(-4px);
+}
+
+.main-text a.ctaa {
+    background: transparent;
+    border: 1px solid rgb(155, 192, 193);
+    margin-left: 20px;
+}
+
+.main-text a.ctaa:active {
+    background: linear-gradient(180deg, transparent, rgb(255, 255, 255));
+}
+
+.main-text a.ctaa i {
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.icons {
+    position: absolute;
+    top: 50%;
+    padding: 0 9%;
+    transform: translateY(-50%);
+}
+
+.icons i {
+    display: block;
+    margin: 26px 0;
+    font-size: 24px;
+    color: black;
+    transition: all .55s ease;
+}
+
+.icons i:hover {
+    font-size: 40px;
+    transform: translateX(-7px);
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.scroll-down {
+    position: absolute;
+    bottom: 6%;
+    right: 9%;
+}
+
+.scroll-down i {
+    display: block;
+    padding: 12px;
+    font-size: 25px;
+    color: black;
+    background-color: rgb(155, 192, 193);
+    border-radius: 30px;
+    transition: all .50s ease;
+}
+
+.scroll-down i:hover {
+    background-color: rgba(155, 192, 193, 0.5);
+    transform: translateY(5px);
+}
+
+.modal {
+    position: fixed;
+    /* фиксированное положение */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.1);
+    /* цвет фона */
+    z-index: 1050;
+    opacity: 0;
+    /* по умолчанию модальное окно прозрачно */
+    -webkit-transition: opacity 200ms ease-in;
+    -moz-transition: opacity 200ms ease-in;
+    transition: opacity 200ms ease-in;
+    /* анимация перехода */
+    pointer-events: none;
+    /* элемент невидим для событий мыши */
+    margin: 0;
+    padding: 0;
+}
+
+/* при отображении модального окно */
+.modal:target {
+    opacity: 1;
+    /* делаем окно видимым */
+    pointer-events: auto;
+    /* элемент видим для событий мыши */
+    overflow-y: auto;
+    /* добавляем прокрутку по y, когда элемент не помещается на страницу */
+}
+
+/* ширина модального окна и его отступы от экрана */
+.modal-dialog {
+    position: relative;
+    width: 75%;
+    margin-top: 12vh;
+    margin-left: auto;
+    margin-right: auto;
+    background: linear-gradient(225deg, rgb(255, 255, 255) 25%, rgb(173, 208, 209) 65%, rgb(255, 255, 255) 100%);
+    border-radius: 30px;
+}
+
+.modal-content {
+    position: relative;
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+}
+
+
+.modal-header {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: 2;
+    padding: 15px;
+}
+
+.modal-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 2.5rem;
+    font-weight: 500;
+}
+
+.close {
+    grid-column: 2;
+    text-align: right;
+    margin-left: auto;
+    margin-right: 15px;
+    font-family: sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1;
+    color: black;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .5;
+    text-decoration: none;
+    transition: 0.55s ease;
+    height: 25px;
+}
+
+/* свойства для кнопки "Закрыть" при нахождении её в фокусе или наведении */
+.close:focus,
+.close:hover {
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 35px;
+    opacity: .75;
+}
+
+/* свойства для блока, содержащего основное содержимое окна */
+.modal-body {
+    grid-column: span 2;
+    padding: 15px;
+    overflow: auto;
+    background: transparent;
+    font-size: 1.5rem;
+    line-height: 1.7;
+    width: auto;
+    text-align: justify;
+    border: 3px solid transparent;
+}
+
+.modal-body input {
+    font-size: 1.25rem;
+    line-height: 1.7;
+    margin: 15px 0px;
+    border-radius: 5px;
+    border: 0.5px solid transparent;
+}
+
+.modal-body textarea {
+    font-size: 1.25rem;
+    line-height: 1.7;
+    margin: 15px 0px;
+    border-radius: 5px;
+    border: 0.5px solid transparent;
+    height: 200px;
+}
+
+.create-article-form div.form-buttom {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.form-buttom input {
+    border-radius: 10px;
+    border: 2px solid rgb(155, 192, 193);
+    background-color: transparent;
+    transition: 0.55s ease;
+    padding: 5px 12px;
+    margin-right: 10px;
+    text-transform: uppercase;
+    font-size: 10pt;
+    font-weight: 600;
+}
+
+.form-buttom input.ctaa {
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-color: rgb(155, 192, 193);
+}
+
+.form-buttom input:hover {
+    transform: translateY(-4px);
+}
+
+.form-buttom input:active {
+    transform: translateY(2px);
+}
+
+.modal-body textarea {
+    resize: none;
+    font-size: 1rem;
+}
+
+ul .active {
+    border-bottom: 2px solid black;
+}
+
+.login {
+    position: absolute;
+    /* фиксированное положение */
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: transparent;
+    /* цвет фона */
+    z-index: 1050;
+    opacity: 0;
+    /* по умолчанию модальное окно прозрачно */
+    -webkit-transition: opacity 200ms ease-in;
+    -moz-transition: opacity 200ms ease-in;
+    transition: opacity 200ms ease-in;
+    /* анимация перехода */
+    pointer-events: none;
+    /* элемент невидим для событий мыши */
+    margin: 0;
+    padding: 0;
+}
+
+/* при отображении модального окно */
+.login:target {
+    opacity: 1;
+    /* делаем окно видимым */
+    pointer-events: auto;
+    /* элемент видим для событий мыши */
+    overflow-y: auto;
+    /* добавляем прокрутку по y, когда элемент не помещается на страницу */
+}
+
+
+/* ширина модального окна и его отступы от экрана */
+.login-dialog {
+    position: relative;
+    width: 400px;
+    height: auto;
+    margin-left: auto;
+    margin-right: 20px;
+    margin-top: 4%;
+    height: auto;
+    background: rgb(173, 208, 209);
+    border-radius: 30px;
+}
+
+.login-body {
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    overflow: auto;
+    background: transparent;
+    font-size: 1.5rem;
+    line-height: 1.7;
+    width: auto;
+    text-align: justify;
+    border: 3px solid transparent;
+}
+
+.login-content {
+    position: relative;
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+
+    >ul {
+        margin-top: 10px;
+    }
+}
+
+.login-header {
+    grid-column: span 2;
+    display: grid;
+    padding: 15px;
+
+    >.close {
+        margin-right: 5px;
+    }
+}
+
+.login-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.login-body input {
+    display: block;
+    width: 230px;
+    font-size: 1.25rem;
+    line-height: 1.7;
+    margin: 5px;
+    border-radius: 5px;
+    border: 0.5px solid transparent;
+}
+
+.login-form div {
+    display: grid;
+    grid-template-columns: 2;
+
+    >p {
+        width: 120px;
+        grid-column: 1;
+        text-align: start;
+    }
+
+    >input {
+        grid-column: 2;
+    }
+}
+
+.login-form div.login-buttom {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.login-buttom input {
+    border-radius: 10px;
+    border: 2px solid rgb(155, 192, 193);
+    background-color: transparent;
+    transition: 0.55s ease;
+    padding: 5px 12px;
+    margin-right: 10px;
+    text-transform: uppercase;
+    font-size: 10pt;
+    font-weight: 600;
+}
+
+.login-buttom input.ctaa {
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-color: rgb(155, 192, 193);
+}
+
+.login-buttom input:hover {
+    transform: translateY(-4px);
+}
+
+.login-buttom input:active {
+    transform: translateY(2px);
+}
