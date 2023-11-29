@@ -113,6 +113,8 @@ header {
     }
 }
 
+
+
 .create-article-form {
     display: flex;
     flex-direction: column;
@@ -200,34 +202,66 @@ header {
     color: rgba(0, 0, 0, 0.411);
 }
 
-.article-text a.buttom {
+
+.buttom-block form {
     display: inline-block;
+    padding: 8px 20px;
+}
+
+.buttom-block form input{
     color: black;
     background: transparent;
+    line-height: 1.4;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: all .55s ease;
+    border: transparent;
+}
 
+.buttom-block{
+    grid-column: 2;
+    display: grid;
+    grid-template-columns: 2;
+    height: auto;
+    margin-bottom: 20px;
+    height: 35px;
+}
+
+.buttom-block p.non-active-buttom {
+    color: black;
+    background: transparent;
     padding: 8px 20px;
     line-height: 1.4;
     font-size: 12px;
     font-weight: 500;
     text-transform: uppercase;
     transition: all .55s ease;
-    margin-bottom: 20px;
+    grid-column: 1;
 }
 
-.article-text a.ex-buttom {
+.buttom-block i {
+    margin-right: 5px;
+}
+
+.buttom-block a.ex-buttom {
+    width: 200px;
+    margin-right: 20px;
+    margin-left: auto;
+    padding: 8px 15px;
     color: black;
     background: transparent;
     border: 1px solid rgb(155, 192, 193);
     border-radius: 8px;
-    padding: 8px 20px;
     line-height: 1.4;
     font-size: 12px;
     font-weight: 500;
     text-transform: uppercase;
     transition: all .55s ease;
+    grid-column: 2;
 }
 
-.article-text a.ex-buttom:hover {
+.buttom-block a.ex-buttom:hover {
     background: rgb(155, 192, 193);
     transform: translateX(6px);
 }

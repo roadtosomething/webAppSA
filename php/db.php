@@ -22,12 +22,6 @@ function getArticles()
     return $db->query("SELECT * from articles");
 }
 
-function getModeratedArticles()
-{
-    global $db;
-    return $db->query("SELECT * from moderated_articles");
-}
-
 function getArticlesById($id)
 {
     global $db;
@@ -37,31 +31,10 @@ function getArticlesById($id)
     }
 }
 
-function getModeratedArticlesById($id)
-{
-    global $db;
-    $articles = $db->query("SELECT * from moderated_articles where id=$id");
-    foreach ($articles as $article) {
-        return $article;
-    }
-}
-
 function createArticle($title, $description, $author, $date, $url, $img_name)
 {
     global $db;
     $sql = "INSERT INTO `articles` (`title`, `description`, `author`, `created_date`, `url`, `img_name`) 
-    VALUES ('$title', '$description', '$author', '$date', '$url', '$img_name')";
-    $result = $db->query($sql);
-    if (!$result) {
-        $db->errorInfo();
-        exit();
-    }
-}
-
-function createModeratedArticle($title, $description, $author, $date, $url, $img_name)
-{
-    global $db;
-    $sql = "INSERT INTO `moderated_articles` (`title`, `description`, `author`, `created_date`, `url`, `img_name`) 
     VALUES ('$title', '$description', '$author', '$date', '$url', '$img_name')";
     $result = $db->query($sql);
     if (!$result) {
@@ -136,5 +109,26 @@ function getUserGroup($id)
         $db->errorInfo();
         exit();
     }
-    return $result->fetchObject()->group;
+    return $result->fetchColumn();
+}
+
+function getCountArticlesForModerate(){
+    global $db;
+    $sql = "SELECT count(*) from 'articles'";
+    $result = $db->query($sql);
+    if (!$result) {
+        $db->errorInfo();
+        exit();
+    }
+    return $result->fetchColumn();
+}
+
+function moderatedArticle($id){
+    global $db;
+    $sql = "UPDATE `articles` SET `is_moderated` = '1' WHERE `articles`.`id` = '$id';";
+    $result = $db->query($sql);
+    if (!$result) {
+        $db->errorInfo();
+        exit();
+    }
 }

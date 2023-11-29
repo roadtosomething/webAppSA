@@ -8,11 +8,11 @@
         </div>
         <?php
         $articles = getArticles();
-        foreach ($articles as $article):
-            $author = getAuthorInfoByArticle($article['author']) ?>
+        foreach ($articles as $article) :
+            $author = getAuthorInfoByArticle($article['author']); ?>
             <div class="article">
                 <div class="article-img">
-                    <img src=<?="tmp/img/".$article['img_name']?>>
+                    <img src=<?= "tmp/img/" . $article['img_name'] ?>>
                 </div>
                 <div class="article-text">
                     <h5>Автор:
@@ -29,10 +29,21 @@
                             <?php echo $article['description'] ?>
                         </p>
                     </div>
-                    <a class="buttom" href="">Подробнее</a>
-                    <a class="ex-buttom" href=<?php echo $article['url'] ?>>Читать в источнике<i
-                            class="ri-arrow-right-s-line"></i></a>
                 </div>
+                <div class="buttom-block">
+                        <?php if (getUserGroup($_COOKIE['id']) == 3) :
+                            if ($article['is_moderated'] == 0) : ?>
+                                <form action="/php/moderatedArticle.php" method="post">
+                                    <i class="ri-checkbox-blank-circle-line"></i>
+                                    <input type="hidden" name="id" value="<?= (int) $article['id'] ?>">
+                                    <input type="submit" value="Отобразить пользователям">
+                                </form>
+                            <?php else : ?>
+                                <p class="non-active-buttom"><i class="ri-checkbox-circle-line"></i></i>Отображено</p>
+                        <?php endif;
+                        endif; ?>
+                        <a class="ex-buttom" href=<?php echo $article['url'] ?>>Читать в источнике<i class="ri-arrow-right-s-line"></i></a>
+                    </div>
             </div>
         <?php endforeach; ?>
     </div>
