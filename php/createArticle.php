@@ -16,4 +16,4 @@ $date = date('Y-n-d H:i:s', $time);
 $filename = uploadImage();
 createArticle($title, $description, $author, $date, $url, $filename);
 
-header('Location: /');
+GoBack();

@@ -26,13 +26,20 @@ $(document).click(function (e) {
 });
 
 $(document).click(function (e) {
-    if ($(e.target).is('.login')) {
-        closeModal()
+    console.log('Document clicked');
+    if ($(e.target).is('.userModal')) {
+        console.log('.userModal clicked');
+        closeModal();
     }
 });
 
-$(document).click(function (e) {
-    if ($(e.target).is('.login')) {
-        closeModal()
-    }
-});
+function closeModal(){
+    location.hash='';
+}
+
+var modal = document.getElementById('userInfoModal');
+if (window.getComputedStyle(modal).opacity == '1') {  
+    console.log('Модальное окно открыто');
+} else {
+    console.log('Модальное окно закрыто');
+}

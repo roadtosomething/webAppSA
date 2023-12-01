@@ -10,10 +10,10 @@
             if (!isset($_COOKIE['user'])) : ?>
                 <li><a href="#loginModal">Регистрация / Вход</a></li>
             <?php else : ?>
-                <li><a href="#"><?php echo getNameUser($_COOKIE['user'])?></a></li>
-                <li><a href="/php/exit.php">Выход</a></li>
+                <li><a class="userButton" href="#userInfoModal"><?php echo getNameUser($_COOKIE['user'])?></a></li>
             <?php endif; ?>
         </ul>
         <div class="bx bx-menu" id="menu-icon"></div>
     </header>
     <?php require_once("php/loginModal.php"); ?>
+    <?php require_once("php/userInfoModal.php");?>

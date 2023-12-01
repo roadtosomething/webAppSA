@@ -4,7 +4,13 @@
     <div class="article-block">
         <div class="header-article">
             <h1>Полезные статьи и база знаний</h1>
-            <a href="#createArticleModal" class="createButtom">Создать статью</a>
+            <?php
+            if (isset($_COOKIE['id'])) {
+            ?>
+                <a href="#createArticleModal" class="createButtom">Создать статью</a>
+            <?php
+            }
+            ?>
         </div>
         <?php
         $articles = getArticles();
@@ -31,6 +37,9 @@
                     </div>
                 </div>
                 <div class="buttom-block">
+                    <?php
+                    if (isset($_COOKIE['id'])) {
+                    ?>
                         <?php if (getUserGroup($_COOKIE['id']) == 3) :
                             if ($article['is_moderated'] == 0) : ?>
                                 <form action="/php/moderatedArticle.php" method="post">
@@ -40,10 +49,11 @@
                                 </form>
                             <?php else : ?>
                                 <p class="non-active-buttom"><i class="ri-checkbox-circle-line"></i></i>Отображено</p>
-                        <?php endif;
-                        endif; ?>
-                        <a class="ex-buttom" href=<?php echo $article['url'] ?>>Читать в источнике<i class="ri-arrow-right-s-line"></i></a>
-                    </div>
+                    <?php endif;
+                        endif;
+                    } ?>
+                    <a class="ex-buttom" href=<?php echo $article['url'] ?>>Читать в источнике<i class="ri-arrow-right-s-line"></i></a>
+                </div>
             </div>
         <?php endforeach; ?>
     </div>

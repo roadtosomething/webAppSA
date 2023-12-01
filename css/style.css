@@ -688,3 +688,113 @@ ul .active {
 .login-buttom input:active {
     transform: translateY(2px);
 }
+
+
+
+.login {
+    position: absolute;
+    /* фиксированное положение */
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: transparent;
+    /* цвет фона */
+    z-index: 1050;
+    opacity: 0;
+    /* по умолчанию модальное окно прозрачно */
+    -webkit-transition: opacity 200ms ease-in;
+    -moz-transition: opacity 200ms ease-in;
+    transition: opacity 200ms ease-in;
+    /* анимация перехода */
+    pointer-events: none;
+    /* элемент невидим для событий мыши */
+    margin: 0;
+    padding: 0;
+}
+
+/* при отображении модального окно */
+.login:target {
+    opacity: 1;
+    /* делаем окно видимым */
+    pointer-events: auto;
+    /* элемент видим для событий мыши */
+    overflow-y: auto;
+    /* добавляем прокрутку по y, когда элемент не помещается на страницу */
+}
+
+.userModal {
+    position: fixed;
+    /* фиксированное положение */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.1);
+    /* цвет фона */
+    z-index: 1050;
+    opacity: 0;
+    /* по умолчанию модальное окно прозрачно */
+    -webkit-transition: opacity 200ms ease-in;
+    -moz-transition: opacity 200ms ease-in;
+    transition: opacity 200ms ease-in;
+    /* анимация перехода */
+    pointer-events: none;
+    /* элемент невидим для событий мыши */
+    margin: 0;
+    padding: 0;
+}
+
+.userModal:target {
+    opacity: 1;
+    /* делаем окно видимым */
+    pointer-events: auto;
+    /* элемент видим для событий мыши */
+    overflow-y: auto;
+    /* добавляем прокрутку по y, когда элемент не помещается на страницу */
+}
+
+/* ширина модального окна и его отступы от экрана */
+.userInfo-dialog {
+    position: relative;
+    width: 400px;
+    height: auto;
+    margin-left: auto;
+    margin-right: 20px;
+    margin-top: 4%;
+    height: auto;
+    background: rgb(173, 208, 209);
+    border-radius: 30px;
+}
+
+.login-body {
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    overflow: auto;
+    background: transparent;
+    font-size: 1.5rem;
+    line-height: 1.7;
+    width: auto;
+    text-align: justify;
+    border: 3px solid transparent;
+}
+
+.userInfo-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    grid-template-columns: 3fr 2fr;
+    margin: 8px 15px;
+}
+
+.userButton:active {
+    color: white;
+}
+
+.userInfo {
+    flex-direction: column;
+    justify-content: center;
+}

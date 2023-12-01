@@ -16,6 +16,19 @@ function getAuthorInfoByArticle($author)
     return $author->fetchObject();
 }
 
+function getPersonByUser($userId)
+{
+    global $db;
+    $sql = "SELECT * FROM `person` WHERE `id`=(SELECT `person` from `users` where `id`='$userId')";
+    $user = $db->query($sql);
+    if (!$user) {
+        echo $db->errorInfo();
+        exit();
+    } else {
+        return $user->fetchObject();
+    }
+}
+
 function getArticles()
 {
     global $db;
@@ -112,7 +125,8 @@ function getUserGroup($id)
     return $result->fetchColumn();
 }
 
-function getCountArticlesForModerate(){
+function getCountArticlesForModerate()
+{
     global $db;
     $sql = "SELECT count(*) from 'articles'";
     $result = $db->query($sql);
@@ -123,7 +137,8 @@ function getCountArticlesForModerate(){
     return $result->fetchColumn();
 }
 
-function moderatedArticle($id){
+function moderatedArticle($id)
+{
     global $db;
     $sql = "UPDATE `articles` SET `is_moderated` = '1' WHERE `articles`.`id` = '$id';";
     $result = $db->query($sql);
