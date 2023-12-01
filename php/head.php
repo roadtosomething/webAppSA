@@ -9,7 +9,7 @@ require "php/functions.php"; ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Главная страница представляющая основную информацию о проекте">
     <meta name="keywords" content="нейросеть, искуственный интеллект, собесеодвание, AI, interview, cv, поиск работы, работа в IT">
-    <title>Neuroview</title>
+    <title>SAbBAt</title>
     <!---сustom css link-->
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/media.css">
