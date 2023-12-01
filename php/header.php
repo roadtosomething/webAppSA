@@ -1,6 +1,6 @@
 <body>
     <header>
-        <a href="/" class="logo"><i class="ri-brain-line"></i>AI-Viever</a>
+        <a href="/" class="logo"><i class="ri-brain-line"></i>SAbBat</a>
         <ul class="navlist">
             <li><a href="/">Главная</a></li>
             <li><a href="/about">О нас</a></li>

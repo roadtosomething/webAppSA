@@ -222,7 +222,7 @@ header {
 .buttom-block{
     grid-column: 2;
     display: grid;
-    grid-template-columns: 2;
+    grid-template-columns: 1.5fr 1.5fr 2fr;
     height: auto;
     margin-bottom: 20px;
     height: 35px;
@@ -233,7 +233,7 @@ header {
     background: transparent;
     padding: 8px 20px;
     line-height: 1.4;
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 500;
     text-transform: uppercase;
     transition: all .55s ease;
@@ -242,6 +242,7 @@ header {
 
 .buttom-block i {
     margin-right: 5px;
+    font-size: 12px;
 }
 
 .buttom-block a.ex-buttom {
@@ -258,7 +259,7 @@ header {
     font-weight: 500;
     text-transform: uppercase;
     transition: all .55s ease;
-    grid-column: 2;
+    grid-column: 3;
 }
 
 .buttom-block a.ex-buttom:hover {
@@ -762,7 +763,8 @@ ul .active {
     margin-right: 10%;
     margin-top: 4%;
     height: auto;
-    background: rgb(173, 208, 209);
+    /*background: rgb(173, 208, 209);*/
+    background: linear-gradient(225deg, rgb(255, 255, 255) 39%, rgb(155, 192, 193) 93%);
     border-radius: 30px;
 }
 

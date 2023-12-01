@@ -1,4 +1,6 @@
 <?php
+
+include("functions.php");
 function uploadImage() {
     
     $target_dir = "../tmp/img/"; // ваша целевая директория
@@ -22,7 +24,7 @@ function uploadImage() {
     }
 
     // Устанавливаем допустимый размер файла 
-    if ($_FILES["image"]["size"] > 500000) {
+    if ($_FILES["image"]["size"] > 10000000) {
         echo "Извините, ваш файл слишком велик.";
         return false;
     }
@@ -35,12 +37,11 @@ function uploadImage() {
     
     // Пытаемся загрузить файл
     if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-        echo "Изображение ". $target_file_name. " было успешно загружено.";
+        return $target_file_name;
     } else {
         echo "Произошла ошибка при загрузке файла.";
     }
-    
-    return $target_file_name;
+
 }
 ?>
 

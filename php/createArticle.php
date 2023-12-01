@@ -5,7 +5,7 @@ $title = $_POST['title'];
 $url = $_POST['url'];
 $description = $_POST['description'];
 $author = (int) $_COOKIE['id'];
-$time = time();
+$time = (string) time();
 
 if (preg_match('/^http:\/\//', $url)) {
     echo 'Некорректный url';
@@ -14,6 +14,7 @@ if (preg_match('/^http:\/\//', $url)) {
 
 $date = date('Y-n-d H:i:s', $time);
 $filename = uploadImage();
+echo'Загрузка картинки успешна';
 createArticle($title, $description, $author, $date, $url, $filename);
-
+echo 'Запись создана успешно';
 GoBack();

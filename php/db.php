@@ -32,7 +32,7 @@ function getPersonByUser($userId)
 function getArticles()
 {
     global $db;
-    return $db->query("SELECT * from articles");
+    return $db->query("SELECT * from articles order by `id` desc");
 }
 
 function getArticlesById($id)
@@ -51,9 +51,9 @@ function createArticle($title, $description, $author, $date, $url, $img_name)
     VALUES ('$title', '$description', '$author', '$date', '$url', '$img_name')";
     $result = $db->query($sql);
     if (!$result) {
-        $db->errorInfo();
-        exit();
+        return $db->errorInfo();
     }
+    return "запись создана успешно";
 }
 
 function createPerson($name, $secondName, $surName, $eMail, $phoneNumber)
@@ -140,7 +140,19 @@ function getCountArticlesForModerate()
 function moderatedArticle($id)
 {
     global $db;
-    $sql = "UPDATE `articles` SET `is_moderated` = '1' WHERE `articles`.`id` = '$id';";
+    $sql = "UPDATE `articles` SET `is_moderated` = '1' WHERE `articles`.`id` = '$id'";
+    $result = $db->query($sql);
+    if (!$result) {
+        $db->errorInfo();
+        exit();
+    }
+}
+
+
+function deleteArticle($id)
+{
+    global $db;
+    $sql = "DELETE FROM `articles` WHERE `id`='$id'";
     $result = $db->query($sql);
     if (!$result) {
         $db->errorInfo();
